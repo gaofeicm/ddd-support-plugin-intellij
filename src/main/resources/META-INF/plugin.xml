@@ -1,18 +1,31 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.gaofeicm.dddsupportpluginintellij</id>
+    <id>com.github.gaofeicm.ddd.support.plugin.intellij</id>
     <name>ddd-support-plugin-intellij</name>
     <vendor>gaofeicm</vendor>
+    <description><![CDATA[
+        <h1> ddd support plugin for intellij </h1>
+        ssp 平台在idea的插件 <br>
+        <p>
+        ddd support plugin for intellij <br />
+        <b>
+              <a href="https://gaofeicm.cf">Website</a> |
+              <a href="https://github.com/gaofeicm/ddd-support-plugin-intellij">GitHub</a> |
+          </b>
+        </p>
+    ]]>
+    </description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.gaofeicm.dddsupportpluginintellij.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.gaofeicm.dddsupportpluginintellij.services.MyProjectService"/>
+        <toolWindow id="DDD" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+                    factoryClass="com.ssp.ddd.support.plugin.toolWindow.MyToolWindowFactory"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.gaofeicm.dddsupportpluginintellij.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action class="com.ssp.ddd.support.plugin.action.MyAction" id="dddTest" text="dddTest" description="ddd文件检查" >
+            <add-to-group group-id="ToolsMenu" anchor="first" />
+        </action>
+    </actions>
 </idea-plugin>
